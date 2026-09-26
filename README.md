@@ -1,4 +1,4 @@
-# Crux Training
+# Training App
 
 A mobile-first, installable climbing training plan and progress log. It includes the September 2026 plan and can import future plans in the same spreadsheet layout.
 
