@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#101814">
   <meta name="description" content="A private climbing training calendar and progress log.">
-  <title>Crux Training</title>
+  <title>Training App</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
-  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="extras.css">
   <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -16,9 +16,12 @@
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <span class="eyebrow">TRAINING BLOCK</span>
-      <h1 id="planTitle">September 2026</h1>
+    <div class="brand-lockup">
+      <img class="header-logo" src="icons/icon.svg" alt="">
+      <div>
+        <span class="eyebrow">TRAINING APP</span>
+        <h1 id="planTitle">September 2026</h1>
+      </div>
     </div>
     <button id="installBtn" class="icon-button hidden" aria-label="Install app">↓</button>
   </header>
@@ -37,6 +40,7 @@
       </div>
       <div id="calendar" class="calendar" aria-label="Training calendar"></div>
       <div class="calendar-legend" aria-label="Calendar colours"><span><i class="legend-climbing"></i>Climbing</span><span><i class="legend-fb"></i>Fingerboard</span><span><i class="legend-snc"></i>S&amp;C</span></div>
+      <button id="arrangeWeek" class="secondary-button week-plan-button">Arrange this week</button>
       <section id="dayPanel" class="day-panel" aria-live="polite"></section>
     </section>
 
@@ -90,6 +94,16 @@
       </article>
     </section>
   </main>
+
+  <dialog id="weekPlannerDialog" class="week-dialog">
+    <form method="dialog" class="week-planner">
+      <div class="planner-head"><div><span class="eyebrow">WEEKLY SCHEDULE</span><h2>Arrange training days</h2></div><button class="plain-button" value="cancel" aria-label="Close">×</button></div>
+      <p id="weekPlannerRange" class="planner-copy"></p>
+      <div id="weekPlannerRows" class="planner-rows"></div>
+      <button id="resetWeekPlan" type="button" class="text-button">Use original days</button>
+      <div class="button-row"><button class="secondary-button" value="cancel">Cancel</button><button id="saveWeekPlan" type="button" class="primary-button">Save week</button></div>
+    </form>
+  </dialog>
 
   <nav class="bottom-nav" aria-label="Main navigation">
     <button data-view="calendarView" class="active"><span>▦</span>Plan</button>
